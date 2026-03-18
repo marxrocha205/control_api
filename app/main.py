@@ -3,7 +3,7 @@ from app.database import Base, engine
 
 # IMPORTAR TODOS OS MODELS (IMPORTANTE)
 from app.models import empresa, user, cliente, plano, assinatura
-from app.routes import auth
+from app.routes import auth, clientes, teste
 app = FastAPI(title="SaaS API")
 
 Base.metadata.create_all(bind=engine)
@@ -13,3 +13,5 @@ def root():
     return {"message": "API SaaS rodando 🚀"}
 
 app.include_router(auth.router)
+app.include_router(teste.router)
+app.include_router(clientes.router)
